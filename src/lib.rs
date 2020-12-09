@@ -42,9 +42,6 @@ impl DockerRegistry {
 
     pub async fn delete_tag(&self, repo_name: &str, tag: &str) -> Result<()> {
         let digest = self.retrieve_digest(repo_name, tag).await?.expect("no such tag");
-        //info!("Digest = {}", digest);
-        //jlet splitted: Vec<&str> =  digest.splitn(2, ":").collect();
-        //let digest = splitted[1];
         let target = self.url.join(format!("/v2/{}/manifests/{}", repo_name, digest).as_str())?;
         self.client.delete(target)
             .send()
