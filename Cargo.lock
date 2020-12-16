@@ -123,6 +123,7 @@ name = "dr"
 version = "0.1.0-pre"
 dependencies = [
  "futures",
+ "lazy_static",
  "log",
  "pretty_env_logger",
  "reqwest",
